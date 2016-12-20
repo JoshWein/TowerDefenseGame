@@ -1,0 +1,339 @@
+body#editor-page {
+    background: #0070c6;
+
+    #save-button {
+        background: #2ECC40;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 10px 10px 10px 10px;
+    }
+
+    #save-button:hover {
+        background: #57d666;
+    }
+
+    .editor-tab {
+        background: none;
+        color: rgba(200, 200, 200, 0.7);
+        cursor: pointer;
+        display: block;
+        float: left;
+        margin: 0;
+        pointer-events: all;
+        width: 50%;
+        border: solid 1px;
+    }
+
+    .editor-tab:hover {
+        color: rgba(220, 220, 220, 0.9);
+    }
+
+    .editor-tab.active {
+        background: #0070c6;
+        color: #fff;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    .chooser-table {
+        td, th {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sprite {
+            @include sprite(64px);
+            vertical-align: top;
+            cursor: pointer;
+        }
+        .sprite:hover {
+            box-shadow: inset 0 0 64px 64px rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    #selected-tile {
+        @include sprite(92px);
+        vertical-align: top;
+    }
+
+    #wave-editor-content {
+        $gradstart: 100%;
+        $gradend: 100%;
+        $break-small: 736px;
+        $break-height: 450px;
+        $font: 'Catamaran', sans-serif;
+        color:#f7f7f7;
+        background: #0070c6;
+
+        #wave-editor-title {
+            font-size: 2em;
+            text-align: center;
+            padding: 30px 0 30px 0;
+            margin: 0;
+            font-family: $font;
+            @media screen and (max-width: $break-small) {
+                padding: 20px 0 20px 0;
+            }
+        }
+
+        .wave-editor-subtitle{
+            font-size: 1.3em;
+            text-align: center;
+            padding: 20px 0 20px 0;
+            margin: 0;
+            font-family: $font;
+            @media screen and (max-width: $break-small) {
+                padding: 20px 0 20px 0;
+            }
+        }
+
+        hr {
+            text-align: center;
+            margin: 0 auto;
+            width:100%;
+            height:1px;
+            background:#444;
+            opacity: 0.1;
+
+        }
+
+        #wave-editor-level-info{
+            text-align: center;
+        }
+
+        .field{
+            font-size: .9em;
+            font-family: $font;
+            padding: 0px 15px 0px 15px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        #wave-editor-level-name{
+            width: 30%;
+        }
+
+        #wave-editor-num-waves{
+            width: 10%;
+        }
+
+        #wave-editor-wave-frequency{
+            width: 15%;
+        }
+
+        #wave-editor-starting-coins{
+            width: 15%;
+        }
+
+        #wave-editor-towers-allowed{
+            width: 100%;
+            text-align: center;
+        }
+
+        .tower-card {
+            width: 20%;
+            display: inline-block;
+            .tower-info {
+                .tower-info-labels {
+                    display: inline-block;
+                    text-align: left;
+                    vertical-align: middle;
+                }
+                .sprite {
+                    @include sprite(64px);
+                    margin-right: 10px;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {display:none;}
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        #wave-editor-waves-container {
+            text-align: center;
+            margin: 0 10% 0 10%;
+        }
+
+        .wave-editor-wave-container{
+            font-size: .9em;
+            font-family: $font;
+            padding: 0px 15px 0px 15px;
+            display: inline-block;
+            text-align: left;
+            width: 20%
+        }
+
+        .wave-editor-wave-label{
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .wave-editor-wave-table{
+            display: inline-block;
+            text-align: center;
+        }
+
+        .wave-editor-enemy-cell{
+            width: 50%;
+        }
+
+        .wave-editor-enemy-label {
+            text-align: left;
+            width: 50%;
+        }
+
+        td{
+            border-style: hidden;
+            padding: 10px 10px 10px 10px;
+        }
+
+        input{
+            padding: 10px 15px 10px 15px;
+        }
+
+        @media(max-width: 1250px) {
+            .wave-editor-wave-container {
+                width: 30%;
+            }
+            #wave-editor-waves-container {
+                margin: 0 5% 0 5%;
+            }
+            .tower-card {
+                width: 40%;
+            }
+            #wave-editor-level-name, #wave-editor-wave-frequency {
+                width: 55%;
+            }
+            #wave-editor-num-waves, #wave-editor-starting-coins {
+                width: 35%;
+            }
+        }
+
+        @media(max-width: 800px) {
+            .wave-editor-wave-container {
+                width: 50%;
+            }
+        }
+
+        @media(max-width: 500px) {
+            .wave-editor-wave-container, .tower-card, #wave-editor-level-name, #wave-editor-num-waves, #wave-editor-wave-frequency, #wave-editor-starting-coins {
+                width: 100%;
+            }
+        }
+    }
+
+    #wave-editor-sidebar {
+        #enemy-info-title {
+            padding: 1em;
+            margin-top: 50px;
+        }
+        #enemy-info-list {
+            text-align: left;
+            .enemy-info {
+                border-top: 1px solid rgba(192, 192, 192, 0.6);
+                display: inline-block;
+                padding: 1em;
+                width: 100%;
+                .sprite {
+                    @include sprite(64px);
+                    vertical-align: middle;
+                }
+                .enemy-info-text-container {
+                    display: inline-block;
+                    vertical-align: middle;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    #invalid-input-modal-info {
+        display: inline-block;
+        font-size: 2vw;
+        @media screen and (max-width: 800px) {
+            font-size: 3vw;
+        }
+        padding: 20px;
+        margin: 0 auto;
+    }
+    #invalid-input-modal-list{
+       text-align: left;
+       list-style-type: circle;
+    }
+
+    #share-options {
+        font-size: .5em;
+        #share-link {
+            display: inline-block;
+            font-size: .5em;
+            width: 40%;
+            color: white;
+            background-color: rgba(0,0,0,0);
+        }
+        #share-link-copy-btn {
+            vertical-align: baseline;
+        }
+    }
+
+
+
+}
+

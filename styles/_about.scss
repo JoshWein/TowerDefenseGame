@@ -1,0 +1,96 @@
+@import "../node_modules/bourbon-neat/app/assets/stylesheets/neat";
+
+body#about-page {
+	$gradstart: 100%;
+	$gradend: 100%;
+	$break-small: 736px;
+	$break-height: 450px;
+	$font: 'Catamaran', sans-serif;
+    background: #0070c6;
+
+	.about-title {
+	    color:#f7f7f7;
+		font-size: 3em;
+		text-align: center;
+		padding: 30px 0 10px 0;
+		margin: 0;
+		font-family: $font;
+		@media screen and (max-width: $break-small) {
+			padding: 20px 0 20px 0;
+		}
+		a {
+			color:white;
+			margin-right: 15px;
+			@media screen and (min-width: 800px) {
+				position: absolute;
+				left: 30px;
+			}
+		}
+    }
+
+    .about-content{
+        background: #005495;
+        color: #fff;
+        font-size: 1.3em;
+		text-align: center;
+		padding: 20px 30px 20px 30px;
+		margin: 20px 20px 20px 20px;
+        font-family: $font;
+        border-radius: 15px;
+		@media screen and (max-width: $break-small) {
+			padding: 20px 20px 20px 20px;
+        }
+         box-shadow: 2px 2px 2px #000;
+        a:link { color: #1798fb; } /* visited link */ a:visited { color: #1798fb; }
+        a:hover {
+            color: #8dd1ff;
+        }
+    }
+
+    .profile-content{
+        max-width: 220px;
+        background: #005495;
+        display: inline-block;
+        color: #fff;
+        font-size: 1.3em;
+		text-align: center;
+		padding: 20px 5px 5px 5px;
+		margin: 10px 10px 10px 10px;
+        font-family: $font;
+        border-radius: 15px;
+		@media screen and (max-width: $break-small) {
+			padding: 20px 5px 5px 5px;
+        }
+         box-shadow: 2px 2px 2px #000;
+    }
+
+    .profile-content:hover{
+        background: #003966;
+    }
+
+    .about-cards{
+        display: flex;
+        text-align: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .about-avatar{
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px #000;
+        width: 80%;
+        overflow: hidden;
+    }
+
+    .about-card-header{
+        margin: 10px 0 0 0;
+        font-size: 1.2em;
+        font-family: $font;
+    }
+
+    .about-card-content{
+        font-size: 1em;
+        font-family: $font;
+    }
+
+}

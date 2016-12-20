@@ -1,0 +1,25 @@
+$spritesheetPath: "/img/spritesheet.png";
+$spritesPerRow: 30;
+$numRows: 13;
+
+%sprite-base {
+    display: inline-block;
+    background-image: url($spritesheetPath);
+    background-size: 100% * $spritesPerRow;
+}
+
+@mixin sprite($size) {
+    @extend %sprite-base;
+    height: $size;
+    width: $size;
+}
+
+@mixin sprite-idx($idx) {
+    background-position: -100% * ($idx % $spritesPerRow) -100% * floor($idx/$spritesPerRow);
+}
+
+@for $spriteIdx from 0 through ($numRows * $spritesPerRow) - 1 {
+    .sprite-#{$spriteIdx} {
+        @include sprite-idx($spriteIdx);
+    }
+}

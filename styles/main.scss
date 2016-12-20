@@ -1,0 +1,196 @@
+@import "../node_modules/normalize.css/normalize";
+
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "../node_modules/bourbon-bitters/app/assets/stylesheets/bitters";
+
+$fa-font-path: "font-awesome";
+@import "../node_modules/font-awesome/scss/font-awesome";
+
+@import "sidebar";
+@import "index";
+@import "play";
+@import "editor";
+@import "levelselect";
+@import "waveeditor";
+@import "customlevelselect";
+@import "about";
+
+html, body {
+  height: 100%;
+}
+
+@media not screen and (orientation:portrait) {
+    .landscape-hidden {
+        display: none !important;
+    }
+}
+
+.overlay {
+    position: fixed;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    display: table;
+
+    .content {
+        padding: 5px;
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 5em;
+        line-height: 1.25;
+
+        a, button {
+            vertical-align: middle;
+            display: inline-block;
+            background-color: #0070c6;
+            color: white;
+            border-radius: 3px;
+            padding: 0.75em 1.5em;
+            cursor: pointer;
+            font-size: 0.4em;
+            font-weight: normal;
+            line-height: 100%;
+
+            &:hover, &:focus {
+                background-color: shade(#0070c6, 20%);
+                color: #fff;
+            }
+        }
+        @media(max-height: 500px) {
+          font-size: 4em;
+          line-height: 1;
+        }
+    }
+}
+
+
+#help-modal {
+  background:  rgba(40,40,40, .75);
+  display: inline-block;
+  overflow: auto;
+  .content{
+    background-color: rgba(41,137,216, 0.8);
+    border-radius: 5px;
+    border: 7px #001f34 solid;
+    display: inline-table;
+    font-size: 2em;
+    margin: 5vh auto;
+    max-width: 1050px;
+    padding: 30px;
+    width: 80%;
+    @media(max-height: 500px) {
+      font-size: 1.5em;
+    }
+  }
+  .help-title {
+  }
+  #close-help {
+    float: right;
+    min-width: 40px;
+    color: white;
+  }
+
+  #close-help:hover {
+    color: #f0f0f0;
+  }
+
+  #sound-control {
+    float: left;
+    min-width: 40px;
+    cursor: pointer;
+  }
+  .fa-volume-up{
+    float: left;
+    min-width: 40px;
+    color: #00ff1b;
+  }
+  .fa-volume-off{
+    color: #d02323;
+  }
+  .fa-volume-up:hover {
+    color: #00e618;
+  }
+  .fa-volume-off:hover{
+    color: #fc3e3e;
+  }
+  #editor-vol {
+    opacity: 0;
+  }
+  #instr-pref-update {
+    background-color: #001f34;
+    font-size: .5em;
+  }
+}
+
+.rotate-overlay {
+    z-index: 9999;
+}
+
+#loader {
+    z-index: 2;
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+#phaser {
+    height: 100%;
+    canvas {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.fa-arrow-circle-left:hover {
+  color: #ededed;
+}

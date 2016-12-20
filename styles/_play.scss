@@ -1,0 +1,92 @@
+body#play-page {
+    @include background(linear-gradient(to bottom, #0070c6, #25b4f7));
+    #play-wave-control-button {
+        width: 85%;
+        margin: 15px 0;
+    }
+
+    .play-sidebar-table {
+        margin: 0;
+        td {
+            border-bottom: 1px solid $subdivider-color;
+        }
+        tr:last-child {
+            td {
+                border-bottom: 1px solid $divider-color;
+            }
+        }
+
+        tr.towers {
+            td {
+                transition: background-color 0.2s;
+                &:hover {
+                    background-color: $active-color;
+                }
+            }
+
+            td.active {
+                background-color: $active-color;
+            }
+
+            .tower {
+                @include sprite(32px);
+            }
+        }
+
+        .selected-tower {
+            @include sprite(92px);
+        }
+
+        button {
+            width: 80%;
+        }
+    }
+
+    #level-info {
+        font-size: 0.5em;
+        padding: 20px;
+        margin: 35px;
+        @media(max-width: 750px) {
+            line-height: 150%;
+            font-size: 0.23em;
+        }
+    }
+
+    .ad-link {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ad {
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .ad:hover {
+        box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.25);
+    }
+
+    .ad-space {
+        display: inline-block;
+        @media(max-width: 750px) {
+            width: 30%;
+        }
+    }
+
+    .ad-subtext {
+        font-size: .1em;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    #game-complete-text {
+        font-size: .5em;
+    }
+
+    .share-opts {
+        font-size: 0.6em;
+        margin-bottom: 0.2em;
+    }
+}

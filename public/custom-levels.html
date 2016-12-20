@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <title>International Klein Blue Life</title>
+  <script defer src="built/lib.js"></script>
+  <script defer src="built/app.js"></script>
+  <link rel="stylesheet" href="built/app.css" type="text/css">
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+</head>
+<body id="custom-levels-page">
+  <div id="loader" class="overlay">
+    <div class="content">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <h1 id="level-select-title"><a href="/index.html"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>Custom Level Select</h1>
+  <i class="fa fa-arrow-down" id="down-arrow-1" aria-hidden="true"></i>
+  <i class="fa fa-arrow-down" id="down-arrow-2" aria-hidden="true"></i>
+  <div class='custom-level-section'>
+    <div class='prev-next-container'>
+      <div id="prev-button-container" class="button-container">
+        <a id="prev-button" class='nav-button disabled'>
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+      </div>
+      <ul id="sort-select">
+        <li class="sort-opt sort-opt-left" id="my-levels-sort">My Levels</li
+        ><li class="sort-opt sort-opt-middle" id="by-author-sort">By Author</li
+        ><li class="sort-opt" id="by-name-sort">By Name</li
+        ><li class="sort-opt sort-opt-right" id="most-recent-sort">Most Recent</li>
+      </ul>
+      <div id="next-button-container" class="button-container">
+        <a id="next-button" class='nav-button'>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class='levels-container'>
+      <ul id="levels-row" class='levels-row'></ul>
+    </div>
+  </div>
+  </body>
+  </html>

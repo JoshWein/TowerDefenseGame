@@ -1,0 +1,55 @@
+{
+  "name": "ikblife",
+  "version": "1.0.0",
+  "description": "International Klein Blue Life",
+  "dependencies": {
+    "@types/easystarjs": "^0.1.29",
+    "@types/object-hash": "0.5.28",
+    "@types/random-seed": "^0.3.0",
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "bourbon": "^4.2.7",
+    "bourbon-bitters": "^1.2.1",
+    "bourbon-neat": "^1.8.0",
+    "browser-sync": "^2.17.5",
+    "browserify": "^13.1.1",
+    "concurrently": "^3.1.0",
+    "easystarjs": "^0.3.0",
+    "firebase": "^3.6.1",
+    "firebase-tools": "^3.1.0",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^3.10.1",
+    "normalize.css": "^5.0.0",
+    "object-hash": "1.1.5",
+    "phaser": "~2.6.2",
+    "random-seed": "^0.3.0",
+    "typescript": "^2.0.6",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "build:js": "tsc && browserify build/main.js -o public/built/app.js",
+    "build:css": "node-sass styles/main.scss public/built/app.css",
+    "build:lib": "cp node_modules/phaser/build/phaser.min.js public/built/lib.js",
+    "build:fonts": "cp -rT node_modules/font-awesome/fonts public/built/font-awesome",
+    "build": "npm run build:lib && npm run build:fonts && npm run build:js && npm run build:css",
+    "browsersync": "browser-sync start --server \"public\" --no-notify --files \"public\"",
+    "watch:ts": "tsc -w",
+    "watch:js": "watchify build/main.js -o public/built/app.js",
+    "watch:sass": "node-sass -wr styles/main.scss public/built/app.css",
+    "devserver": "concurrently --kill-others \"npm run watch:ts\" \"npm run watch:js\" \"npm run watch:sass\" \"npm run browsersync\"",
+    "start": "npm run build && npm run devserver"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  }
+}

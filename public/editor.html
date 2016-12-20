@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <title>International Klein Blue Life</title>
+  <script defer src="built/lib.js"></script>
+  <script defer src="built/app.js"></script>
+  <link rel="stylesheet" href="built/app.css" type="text/css">
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+</head>
+<body id="editor-page">
+  <div id="loader" class="overlay">
+    <div class="content">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="invalid-input-modal">
+    <div class="content">
+      <div id="invalid-input-modal-info">
+        <p>Please fix the following before submitting your level:</p>
+        <ul id="invalid-input-modal-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="success-modal">
+    <div class="content">
+      <div id="success-title">Level Saved!</div>
+      <div>
+        <button id="play-now-button">Play Now</button>
+        <div id="share-options">
+          <a id="twitter-share-button" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share</a>
+          <a id="facebook-share-button" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share</a>
+          <div>
+            <input id="share-link"></input>
+            <button id="share-link-copy-btn"><i class="fa fa-files-o"></i> Copy Link</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="help-modal">
+    <div class="content">
+    <i class="fa fa-volume-up" aria-hidden="true" attr="disabled" id="editor-vol"></i>
+      <i class="fa fa-times" aria-hidden="true" id="close-help"></i>
+      <h1 class="help-title">Instructions</h1>
+      <p>Paint the map with path tiles, play tiles, and environment tiles to create your own level.</p>
+      <p>Use the Wave Editor to edit the details of your level such as the name of your level, the towers available, and the enemies for each wave.</p>
+      <p>When you're satisfied with your level press the "Save and Upload Level" button to try it out and share it with your friends. Don't worry, you can always continue editing it later if you don't like it.</p>
+      <button id="instr-pref-update" class="show">Don't Show at Start</button>
+    </div>
+  </div>
+
+
+  <div id="map-editor-content">
+    <!--PHASER CANVAS IS LOADED HERE-->
+    <div id="phaser"></div>
+  </div>
+  <div id="wave-editor-content" class="hidden">
+    <h2 id="wave-editor-title">Wave Editor</h2>
+    <hr>
+    <div id="wave-editor-level-info">
+      <h3 class="wave-editor-subtitle">Level Information</h3>
+      <div class="field" id="wave-editor-level-name">
+        <label>Level Name</label>
+        <input type="text" id="wave-editor-level-name-input" placeholder="Level Name" maxlength="30">
+      </div>
+      <form class="field" id="wave-editor-num-waves">
+        <label>Waves</label>
+        <input id="wave-editor-num-waves-value" type="number" onkeydown="return false"
+        min=1 defaultValue=5 value=5>
+      </form>
+      <div class="field" id="wave-editor-starting-coins">
+        <label>Starting Coins</label>
+        <input type="number" id="wave-editor-starting-coins-input" onkeydown="return false" min=40 defaultValue=50 value=50 step=10>
+      </div>
+
+      <br>
+      <div class="field" id="wave-editor-towers-allowed">
+        <label>Towers Allowed</label>
+        <div id="wave-editor-towers-allowed-table">
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <h3 class="wave-editor-subtitle">Wave Information</h3>
+    <div id="wave-editor-waves-container"></div>
+  </div>
+
+  <!--SIDEBAR-->
+  <div id="sidebar" class="active">
+
+    <!--SIDEBAR NUB-->
+    <div class="sidebar-nub" id="sidebar-nub"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+    <!--Help NUB-->
+    <div class="sidebar-nub" id="help-nub"><i class="fa fa-question" aria-hidden="true"></i></div>
+
+
+    <!--SIDEBAR CONTENTS-->
+    <div id="sidebar-content">
+      <h1>International Klein Blue Life</h1>
+      <nav>
+        <a href="/index.html">Back to Main Menu</a>
+        <a id="save-button">Save and Upload Level</a>
+        <a id="map-editor-tab" class="editor-tab active">Map Editor</a>
+        <a id="wave-editor-tab" class="editor-tab">Wave Editor</a>
+      </nav>
+
+      <div id="map-editor-sidebar">
+        <table id="selected-tile-table">
+          <tr><td>Selected Tile</td></tr>
+          <tr><td><div id="selected-tile"></div></td></tr>
+        </table>
+        Path Tiles
+        <table id="path-tile-chooser-table" class="chooser-table"></table>
+        Start / End Tile
+        <table id="start-tile-chooser-table" class="chooser-table"></table>
+        Play Tiles
+        <table id="tile-chooser-table" class="chooser-table"></table>
+        Environment Tiles
+        <table id="extra-tile-chooser-table" class="chooser-table"></table>
+      </div>
+      <div id="wave-editor-sidebar" class="hidden">
+        <div id="enemy-info-title">
+          Enemy Info
+        </div>
+        <div id="enemy-info-list"></div>
+      </div>
+    </div>
+  </body>
+  </html>

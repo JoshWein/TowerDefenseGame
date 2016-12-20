@@ -1,0 +1,7 @@
+{
+  "short_name": "IKB Life",
+  "name": "International Klein Blue Life",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "landscape"
+}

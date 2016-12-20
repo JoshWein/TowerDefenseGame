@@ -1,0 +1,96 @@
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "spritesheet";
+
+$left-border-color: rgba(192, 192, 192, 0.5);
+$divider-color: rgba(192, 192, 192, 0.2);
+$subdivider-color: rgba(192, 192, 192, 0.2);
+$active-color: rgba(255,255,255,0.08);
+
+$grad-color1: rgba(30,87,153, 0.8);
+$grad-color2: rgba(41,137,216, 0.8);
+$grad-color3: rgba(125,185,232, 0.8);
+
+#sidebar {
+    @include background(linear-gradient(to bottom, $grad-color1 0%,$grad-color2 50%,$grad-color3 100%));
+    position: fixed;
+    top: 0;
+    right: -260px;
+    height: 100%;
+    width: 260px;
+    transition: right 0.5s;
+    border-left: 1px solid $left-border-color;
+    color: white;
+    text-align: center;
+
+    .sidebar-nub {
+        color: #c0c0c0;
+        background-color: #1e5799;
+        text-align: center;
+        padding: 9px 7px 8px 6px;
+        position: absolute;
+        right: 260px;
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    .sidebar-nub:hover {
+        background-color: shade(#1e5799, 10%);
+    }
+
+    #help-nub {
+        top: 42px;
+        background-color: #1962a8;
+        padding: 9px 10px 9px 10px;
+        height: 44px;
+    }
+
+    #help-nub:hover {
+        background-color: shade(#1962a8, 10%);
+    }
+
+    #sidebar-content {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        > div {
+            border-bottom: 1px solid $divider-color;
+        }
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.5);
+        }
+    }
+
+    h1 {
+        margin: 0;
+        padding: 12px 4px;
+        font-size: 0.9em;
+        border-bottom: 1px solid $divider-color;
+    }
+
+    nav > a {
+        display: block;
+        color: white;
+        padding: 10px 0 10px 0;
+        transition: background-color 0.2s;
+        &:hover {
+            background-color: $active-color;
+        }
+        border-bottom: 1px solid $divider-color;
+    }
+
+    button {
+        background-color: #2185D0;
+        i {
+            vertical-align: top;
+        }
+    }
+}
+
+#sidebar.active {
+    right: 0;
+}

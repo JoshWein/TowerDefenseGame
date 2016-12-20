@@ -1,0 +1,32 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        "level": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid",
+          ".validate": "newData.isNumber() && newData.val() % 1 === 0"
+        },
+        "preferences" : {
+         ".read": "$uid === auth.uid",
+         ".write": "$uid === auth.uid"
+       }
+     }
+   },
+   "custom-levels": {
+    ".read": true,
+    "$levelUid": {
+      ".write": "((!data.exists() && newData.child('authorUid').val() === auth.uid) || data.child('authorUid').val() === auth.uid) && auth != null && auth.provider != 'anonymous'"
+    }
+  },
+  "custom-levels-idx": {
+    ".read": true,
+    "$uid": {
+      ".write": "((!data.exists() && newData.child('authorUid').val() === auth.uid) || data.child('authorUid').val() === auth.uid) && auth != null && auth.provider != 'anonymous'"
+    }
+  },
+  "story-levels": {
+    ".read": true
+  }
+}
+}

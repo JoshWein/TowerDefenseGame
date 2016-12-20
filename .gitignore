@@ -1,0 +1,8 @@
+src/LocalConstants.ts
+.vscode
+node_modules
+build
+npm-debug.log
+.idea/
+*.firebaserc
+firebase.json

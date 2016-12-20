@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <title>International Klein Blue Life</title>
+  <script defer src="built/lib.js"></script>
+  <script defer src="built/app.js"></script>
+  <link rel="stylesheet" href="built/app.css" type="text/css">
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+</head>
+<body id="play-page">
+  <div id="loader" class="overlay">
+    <div class="content">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="info-overlay">
+    <div class="content">
+      <div id="level-info"></div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="win-overlay">
+    <div class="content">
+      <div class="ad-space" id="win-ad-space"></div>
+      <p class="ad-subtext">Sponsored Ad</p>
+      <i class="fa fa-smile-o" aria-hidden="true"></i>
+      You win!
+      <div>
+        <div class="share-opts">
+          <a id="twitter-share-button" target="_blank" href="http://twitter.com/share?url=https://ikb-life.firebaseapp.com/&amp;text=I%20just%20beat%20a%20level%20in%20IKB%20Life!%20Check%20it%20out:%20"><i class="fa fa-twitter" aria-hidden="true"></i> Share</a>
+          <a id="facebook-share-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ikb-life.firebaseapp.com/"><i class="fa fa-facebook" aria-hidden="true"></i> Share</a>
+        </div>
+        <a href="/index.html" id="main-menu-btn-win">Main Menu</a>
+        <a href="custom-levels.html" id="custom-levels-btn-win" class="hidden">Custom Levels</a>
+        <button id="next-level-button">Next Level</button>
+      </div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="lose-overlay">
+    <div class="content">
+      <div class="ad-space" id="lose-ad-space"></div>
+      <p class="ad-subtext">Sponsored Ad</p>
+      <i class="fa fa-frown-o" aria-hidden="true"></i>
+      You lose!
+      <div>
+        <a href="index.html" id="main-menu-btn-lose">Main Menu</a>
+        <a href="custom-levels.html" id="custom-levels-btn-lose" class="hidden">Custom Levels</a>
+        <button id="try-again-button">Try Again</button>
+      </div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="game-complete-overlay">
+    <div class="content">
+      <div id="game-complete-text">Wow, you beat the whole thing.<br>Congrats, what were you expecting, a prize? That's not in our budget.<br>The best I can do is this hard-boiled egg and a ticket to an Off Broadway version of Thomas the Tank Engine.</div>
+      <div>
+        <a href="index.html" id="main-menu-btn-lose">Main Menu</a>
+        <a href="custom-levels.html" id="custom-levels-btn-lose">Custom Levels</a>
+      </div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="help-modal">
+    <div class="content">
+      <i class="fa fa-volume-up" aria-hidden="true" id="sound-control"></i>
+      <i class="fa fa-times" aria-hidden="true" id="close-help"></i>
+      <h1 class="help-title">Level Info</h1>
+      <p id="help-level-info"></p>
+      <h1>Instructions</h1>
+      <p>Objective: Stop the waves of enemies from reaching your base. You lose if your health at the top left reaches zero. You win if you can survive every wave.</p>
+      <p>You can open and close the sidebar by clicking on the arrow attached to the top of the sidebar.</p>
+      <p>Buying Towers: Choose a tower from the sidebar and place it on the map to buy it.</p>
+      <p>Selling/Upgrading Towers: Select a tower on the map and then scroll to the bottom of the sidebar to either sell or upgrade it.</p>
+    </div>
+  </div>
+
+  <!--PHASER CANVAS IS LOADED HERE-->
+  <div id="phaser"></div>
+
+  <!--SIDEBAR-->
+  <div id="sidebar">
+
+    <!--SIDEBAR NUB-->
+    <div class="sidebar-nub" id="sidebar-nub"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+    <!--Help NUB-->
+    <div class="sidebar-nub" id="help-nub"><i class="fa fa-question" aria-hidden="true"></i></div>
+
+    <!--SIDEBAR CONTENTS-->
+    <div id="sidebar-content">
+      <h1>International Klein Blue Life</h1>
+      <nav>
+        <a href="/index.html">Back to Main Menu</a>
+        <a href="" class="hidden" id="edit-level-nav-link">Edit Level</a>
+      </nav>
+      <div><button type="button" id="play-wave-control-button">Start Wave!</button></div>
+      <table class="play-sidebar-table">
+        <tr class="towers" id="sidebar-towers"></tr>
+      </table>
+      <table class="play-sidebar-table">
+        <tr><td colspan="2" id="tower-name">Tower Name</td></tr>
+        <tr><td>Damage</td><td id="tower-damage"></td></tr>
+        <tr><td>Range</td><td id="tower-range"></td></tr>
+        <tr><td>Cooldown</td><td id="tower-cooldown"></td></tr>
+        <tr><td>Cost</td><td id="tower-cost"></td></tr>
+      </table>
+      <table id="selected-tower-info" class="play-sidebar-table hidden">
+        <tr><td colspan="2"><b>Selected Tower</b></td></tr>
+        <tr><td colspan="2"><div id="selected-tower-sprite" class="selected-tower"></div></td></tr>
+        <tr><td>Type</td><td id="selected-tower-type"></td></tr>
+        <tr><td>Damage</td><td id="selected-tower-damage"></td></tr>
+        <tr><td>Range</td><td id="selected-tower-range"></td></tr>
+        <tr><td>Cooldown</td><td id="selected-tower-cooldown"></td></tr>
+        <tr><td>Cost</td><td id="selected-tower-value"></td></tr>
+        <tr><td colspan="2"><button type="button" id="upgrade-selected">Upgrade</button></td></tr>
+        <tr><td colspan="2"><button type="button" id="sell-selected">Sell</button></td></tr>
+      </table>
+  </div>
+</body>
+</html>
