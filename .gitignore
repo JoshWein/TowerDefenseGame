@@ -5,4 +5,5 @@ build
 npm-debug.log
 .idea/
 *.firebaserc
-firebase.jsonpublic/built
+firebase.json
+public/built
