@@ -1,8 +1,12 @@
 {
     "compilerOptions": {
-        "outDir": "./build",
-        "target": "es6",
-        "moduleResolution": "node",
+        "target": "es2020",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "lib": ["es2020", "dom"],
+        "noEmit": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,

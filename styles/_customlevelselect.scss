@@ -1,4 +1,4 @@
-@import "../node_modules/bourbon-neat/app/assets/stylesheets/neat";
+@import "vendor/neat/neat";
 
 body#custom-levels-page {
 	$gradstart: 100%;
@@ -54,7 +54,7 @@ body#custom-levels-page {
 	.button-container {
 		font-size: 1.25em;
 		width: 12%;
-		@media screen and(max-width: 1690px) {
+		@media screen and (max-width: 1690px) {
 			width: 10%;
 		}
 	}
@@ -117,7 +117,7 @@ body#custom-levels-page {
 		text-align: center;
 		width: 100%;
 		height: 100%;
-		@media screen and(max-width: $break-rows) {
+		@media screen and (max-width: $break-rows) {
 			margin-top: 25%;
 		}
 	}
@@ -203,7 +203,7 @@ body#custom-levels-page {
 		&:hover {
 			background: #005393;
 		}
-		@media screen and(max-width: 1565px) {
+		@media screen and (max-width: 1565px) {
 			width: 50%;
 		}
 	}
@@ -213,7 +213,7 @@ body#custom-levels-page {
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
 		border-right: solid 1px $border-color;
-		@media screen and(max-width: $break-rows) {
+		@media screen and (max-width: $break-rows) {
 			border-radius: 0px;
 		}
 	}
@@ -226,12 +226,12 @@ body#custom-levels-page {
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
 		border-left: solid 1px $border-color;
-		@media screen and(max-width: $break-rows) {
+		@media screen and (max-width: $break-rows) {
 			border-radius: 0px;
 		}
 	}
 
-	@media screen and(max-width: $break-rows) {
+	@media screen and (max-width: $break-rows) {
 		#by-author-sort {
 			border: none;
 			border-top-right-radius: 5px;

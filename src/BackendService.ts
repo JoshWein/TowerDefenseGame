@@ -1,9 +1,10 @@
-import * as firebase from 'firebase'
-import { FIREBASE_CONFIG } from './LocalConstants'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+import 'firebase/compat/database'
 import TowerDefenseLevel from './TowerDefenseLevel'
 import CustomLevel from './CustomLevel'
 
-const AUTH_PROVIDER = new firebase.auth.GoogleAuthProvider();
+let AUTH_PROVIDER: firebase.auth.GoogleAuthProvider;
 
 export interface CustomLevelIndexObject {
     uid: string,
@@ -11,13 +12,23 @@ export interface CustomLevelIndexObject {
     name: string
 }
 
-function waitFor(promise: firebase.Promise<any>): firebase.Promise<any> {
+function waitFor(promise: Promise<any>): Promise<any> {
     document.getElementById('loader').classList.remove('hidden');
     return promise.then(() => document.getElementById('loader').classList.add('hidden'));
 }
 
-export function init(): Promise<void> {
-    firebase.initializeApp(FIREBASE_CONFIG);
+// Firebase Hosting serves the project's web config at this reserved URL,
+// so no config needs to live in the repo. For local dev, `firebase serve`
+// (or `firebase emulators:start --only hosting`) serves it too.
+const FIREBASE_INIT_URL = '/__/firebase/init.json';
+
+export async function init(): Promise<void> {
+    const response = await fetch(FIREBASE_INIT_URL);
+    if (!response.ok) {
+        throw new Error(`Could not load Firebase config from ${FIREBASE_INIT_URL} (${response.status})`);
+    }
+    firebase.initializeApp(await response.json());
+    AUTH_PROVIDER = new firebase.auth.GoogleAuthProvider();
     return new Promise<void>(resolve => {
         let usub = firebase.auth().onAuthStateChanged((user: firebase.User) => {
             if(!user) firebase.auth().signInAnonymously();

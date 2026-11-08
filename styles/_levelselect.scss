@@ -1,4 +1,10 @@
-@import "../node_modules/bourbon-neat/app/assets/stylesheets/neat";
+@import "vendor/neat/neat";
+
+// Old Sass allowed `color - number` (subtracts from each RGB channel).
+// Dart Sass removed color arithmetic, so do it explicitly.
+@function subtract-channels($color, $amount) {
+	@return rgb(max(red($color) - $amount, 0), max(green($color) - $amount, 0), max(blue($color) - $amount, 0));
+}
 
 body#levels-page {
 	$gradstart: 100%;
@@ -35,19 +41,19 @@ body#levels-page {
 	}
 
 	#world-1-section {
-		@include background(radial-gradient(#2ecc71, #2ecc71 - $gradOffset));
+		@include background(radial-gradient(#2ecc71, subtract-channels(#2ecc71, $gradOffset)));
 	}
 
 	#world-2-section {
-		@include background(radial-gradient(#cdc0a4, #cdc0a4 - $gradOffset));
+		@include background(radial-gradient(#cdc0a4, subtract-channels(#cdc0a4, $gradOffset)));
 	}
 
 	#world-3-section {
-		@include background(radial-gradient(#bb8044, #bb8044 - $gradOffset));
+		@include background(radial-gradient(#bb8044, subtract-channels(#bb8044, $gradOffset)));
 	}
 
 	#world-4-section {
-		@include background(radial-gradient(#88a3a5, #88a3a5 - $gradOffset));
+		@include background(radial-gradient(#88a3a5, subtract-channels(#88a3a5, $gradOffset)));
 	}
 
 	.world-header {

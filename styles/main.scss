@@ -1,7 +1,7 @@
 @import "../node_modules/normalize.css/normalize";
 
 @import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
-@import "../node_modules/bourbon-bitters/app/assets/stylesheets/bitters";
+@import "vendor/bitters/bitters";
 
 $fa-font-path: "font-awesome";
 @import "../node_modules/font-awesome/scss/font-awesome";

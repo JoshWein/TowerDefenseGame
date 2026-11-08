@@ -34,9 +34,9 @@ export function init() {
     if(Backend.isUserGuest()) location.href = ".";
     let resourceIdentifier = location.hash.substr(1);
 
-    return new Promise((resolve) => {
+    return new Promise<CustomLevel | undefined>((resolve) => {
         if(resourceIdentifier === "") {
-            resolve();
+            resolve(undefined);
         } else {
             resolve(Backend.getCustomLevel(resourceIdentifier));
         }
